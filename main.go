@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/saikumaradapa/jwt-auth/handlers"
 )
 
 func main() {

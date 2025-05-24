@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/saikumaradapa/jwt-auth/models"
+	"github.com/saikumaradapa/jwt-auth/utils"
 )
 
 func Register(w http.ResponseWriter, r *http.Request) {
