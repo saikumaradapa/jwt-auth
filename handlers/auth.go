@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/saikumaradapa/jwt-auth/middleware"
 	"github.com/saikumaradapa/jwt-auth/models"
 	"github.com/saikumaradapa/jwt-auth/utils"
 )
@@ -66,7 +67,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 }
 
 func Protected(w http.ResponseWriter, r *http.Request) {
-	username := r.Context().Value("username").(string)
+	username, exists := r.Context().Value(middleware.UsernameKey).(string)
+	if !exists {
+		http.Error(w, "username not found in context", http.StatusInternalServerError)
+		return
+	}
 	welcomeMsg := map[string]string{"message": fmt.Sprintf("Welcome %v", username)}
 	errEncode := json.NewEncoder(w).Encode(welcomeMsg)
 	if errEncode != nil {

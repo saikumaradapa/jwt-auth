@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/saikumaradapa/jwt-auth/handlers"
+	"github.com/saikumaradapa/jwt-auth/middleware"
 )
 
 func main() {

@@ -10,7 +10,7 @@ import (
 
 type contextKey string
 
-const usernameKey contextKey = "username"
+const UsernameKey contextKey = "username"
 
 func JWTMiddleware(next http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +27,7 @@ func JWTMiddleware(next http.Handler) http.HandlerFunc {
 			return
 		}
 
-		ctx := context.WithValue(r.Context(), usernameKey, username)
+		ctx := context.WithValue(r.Context(), UsernameKey, username)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
